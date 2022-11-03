@@ -1,0 +1,91 @@
+@use "colors" as *;
+@use "variables" as *;
+
+@mixin container() {
+  max-width: $containerWidth;
+  margin: 0 auto;
+  padding: 0 $size6;
+}
+
+@mixin iconSize($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin title {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  @include fontMontserrat;
+}
+
+@mixin tagline {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: $size3;
+  @include fontKaushanScript;
+}
+
+@mixin divider {
+  width: 60px;
+  height: $borderWidth;
+  background-color: $colorRed;
+}
+
+@mixin text {
+  font-size: 15px;
+  font-weight: 400;
+  color: $colorGray;
+  line-height: 24px;
+  @include fontRoboto;
+}
+
+@mixin spacingHorizontal($value) {
+  & > * {
+    margin-right: $value;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// fonts
+
+@mixin fontMontserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+@mixin fontRoboto {
+  font-family: "Roboto", sans-serif;
+}
+
+@mixin fontKaushanScript {
+  font-family: "Kaushan Script", cursive;
+}
+
+@mixin sm {
+  @media (min-width: #{$sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$xl}) {
+    @content;
+  }
+}

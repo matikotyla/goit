@@ -1,0 +1,464 @@
+@use "colors" as *;
+@use "variables" as *;
+@use "mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// navbar
+
+.navbar {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding-top: $size6;
+  color: $colorWhite;
+  @include fontMontserrat;
+  z-index: 10;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $size5;
+    @include container;
+
+    @include md() {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    color: $colorWhite;
+    text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: $size5;
+
+    @include md() {
+      gap: $size6;
+    }
+
+    @include lg() {
+      gap: $size7;
+    }
+
+    @include xl() {
+      gap: $size8;
+    }
+
+    &-item {
+      color: $colorWhite;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 14px;
+      position: relative;
+
+      &:hover {
+        color: $colorYellow;
+
+        @include lg() {
+          &:after {
+            width: 100%;
+          }
+        }
+      }
+
+      &:after {
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        content: "";
+        width: 0;
+        height: $borderWidth;
+        background-color: $colorYellow;
+        transition: width 500ms ease-in-out;
+      }
+    }
+
+    &-icon {
+      @include iconSize($iconSize);
+      color: $colorWhite;
+
+      &:hover {
+        color: $colorYellow;
+      }
+    }
+  }
+}
+
+// hero
+
+.hero {
+  width: 100%;
+  padding: 234px 0;
+  background-image: $gradient, url("/src/assets/images/eagle.jpg");
+  background-size: cover;
+  background-position: 50% 0%;
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $colorWhite;
+  }
+
+  &__tagline {
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: $size2;
+    text-align: center;
+    @include fontKaushanScript;
+
+    @include lg() {
+      font-size: 72px;
+    }
+  }
+
+  &__title {
+    font-size: 75px;
+    line-height: 70px;
+    font-weight: 700;
+    margin-bottom: $size7 + $size9;
+    text-align: center;
+    text-transform: uppercase;
+    @include fontMontserrat;
+
+    @include lg() {
+      font-size: 150px;
+      line-height: 140px;
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 700;
+    color: $colorWhite;
+    @include fontMontserrat;
+    background: none;
+    padding: $size4 $size7;
+    border: $borderWidth solid $colorWhite;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+// services
+
+.services {
+  padding: $size8 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $size7;
+    @include container;
+  }
+
+  &__header {
+    color: $colorBlack;
+  }
+
+  &__tagline {
+    @include tagline;
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include lg() {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include xl() {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    gap: $size9 $size8;
+  }
+
+  &__item {
+    display: flex;
+    gap: $size6;
+  }
+
+  &__item-icon {
+    @include iconSize($serviceIconSize);
+
+    & > svg {
+      fill: $colorBlue;
+    }
+  }
+
+  &__item-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: $colorBlack;
+    text-transform: uppercase;
+    margin-bottom: $size4;
+    @include fontMontserrat;
+  }
+
+  &__item-text {
+    @include text;
+  }
+}
+
+// team
+
+.team {
+  padding: $size8 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $size7;
+    @include container;
+  }
+
+  &__header {
+    color: $colorBlack;
+  }
+
+  &__tagline {
+    @include tagline;
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__text {
+    @include text;
+    max-width: $lg;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    gap: $size7;
+    grid-template-columns: 1fr;
+
+    @include md() {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include lg() {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__item {
+    $p: &;
+
+    &-image {
+      transition: transform 200ms ease-in-out;
+
+      &:hover:after {
+        height: 100%;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: $gradient;
+        transition: height 400ms ease-in-out;
+      }
+
+      & > img {
+        display: flex;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &-container {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: $colorBlue;
+      }
+
+      &:hover {
+        #{$p}-image {
+          transform: translate(-$imageTranslatelength, -$imageTranslatelength);
+          top: 10px;
+        }
+
+        #{$p}-menu {
+          display: flex;
+        }
+
+        #{$p}-icon {
+          transform: translateY(0%);
+        }
+      }
+    }
+
+    &-menu {
+      position: absolute;
+      z-index: 10;
+      display: flex;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
+
+    &-icon {
+      padding: $size5;
+      background: $colorYellow;
+      transform: translateY(-100%);
+      transition: transform 1s ease-in-out;
+
+      &:hover {
+        background: $colorRed;
+
+        svg {
+          fill: $colorWhite;
+        }
+      }
+
+      svg {
+        display: flex;
+        fill: $colorRed;
+        @include iconSize($size6);
+      }
+    }
+
+    &-title {
+      font-size: 14px;
+      font-weight: 400;
+      color: $colorBlack;
+      text-align: center;
+      margin-top: $size6;
+      margin-bottom: $size3;
+      @include fontMontserrat;
+    }
+
+    &-text {
+      font-size: 15px;
+      font-weight: 300;
+      font-style: italic;
+      color: $colorGrayDark;
+      text-align: center;
+      @include fontRoboto;
+    }
+  }
+}
+
+// footer
+
+.footer {
+  &__container {
+    @include container;
+    margin-top: $size7;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $size4;
+    align-items: center;
+    justify-content: space-between;
+    padding: $size6 0;
+    border-top: 1px solid $colorGrayLight;
+
+    @include md {
+      flex-direction: row;
+    }
+  }
+
+  &__copyright {
+    font-size: 14px;
+    font-weight: 400;
+    color: $colorBlack;
+    @include fontMontserrat;
+  }
+
+  &__link {
+    color: $colorRed;
+    text-decoration: none;
+  }
+
+  &__form {
+    display: flex;
+  }
+
+  &__input {
+    border: 1px solid $colorGrayRegular;
+    padding-left: $size4;
+    outline: none;
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+    @include fontRoboto;
+    width: $footerInputWidth;
+
+    &::placeholder {
+      color: #cccccc;
+    }
+  }
+
+  &__button {
+    font-size: 14px;
+    font-weight: 700;
+    color: $colorWhite;
+    padding: $size4 $size7;
+    background-color: $colorBlue;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    @include fontMontserrat;
+  }
+}
